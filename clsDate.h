@@ -101,6 +101,22 @@ public:
 		return (Month == 2) ? (isLeapYear(Year) ? 29 : 28) :
 			NumberOfDays[Month - 1];
 	}
+	static bool IsValidYear(short year)
+	{
+		return year > 0 ? true : false;
+	}
+	static bool IsValidMonth(short month)
+	{
+		return month > 0 && month < 13 ? true : false;
+	}
+	static bool IsValidDay(clsDate date)
+	{
+		return date.day <= NumberOfDaysInAMonth(date.month, date.year) && date.day >= 1 ? true : false;
+	}
+	static bool IsValidDate(clsDate date)
+	{
+		return IsValidDay(date) && IsValidMonth(date.month) && IsValidYear(date.year);
+	}
 	static string DateFromNumberOfDays(short numberOfDays, short year)
 	{
 		short monthDays = 0;
