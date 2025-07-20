@@ -6,26 +6,26 @@ using namespace std;
 class clsInputValidate
 {
 public :
-	static bool IsNumberBetween(int number, int upperBound, int lowerBound)
+	static bool IsNumberBetween(int number, int From, int To)
 	{
-		return (number<upperBound && number>lowerBound) ? true : false;
+		return (number>=From && number<=To) ? true : false;
 	}
-	static bool IsNumberBetween(double number, double upperBound, double lowerBound)
+	static bool IsNumberBetween(double number, double From, double To)
 	{
-		return (number<upperBound && number>lowerBound) ? true : false;
+		return (number>=From && number<=To) ? true : false;
 	}
-	static bool IsDateBetween(clsDate date, clsDate upperDate, clsDate lowerDate)
+	static bool IsDateBetween(clsDate date, clsDate From, clsDate To)
 	{
-		if (clsDate::DateIsLessThanDate2(upperDate, lowerDate))
+		if (!clsDate::DateIsLessThanDate2(From, To))
 		{
-			clsDate::SwapTwoDates(upperDate, lowerDate);
+			clsDate::SwapTwoDates(From, To);
 			
 		}
-		return date.DateIsLessThanDate2(upperDate) && date.isDate1AfterDate2(lowerDate) ? true : false;
+		return date.DateIsLessThanDate2(To) && date.isDate1AfterDate2(From) ? true : false;
 	}
 	static int ReadIntNumber(string message="")
-	{
-		string text;
+	{	// this is the first soluation to the problem:
+		/*string text;
 		char c;
 		cout << message;
 		while (true)
@@ -45,13 +45,20 @@ public :
 				if (i == text.length() - 1)
 					return stoi(text);
 			}
+			cout << message;*/ 
+		//this is the doctor solution:
+		int Number;
+		while(!(cin>>Number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize> ::max(),'\n'));
 			cout << message;
-
 		}
+		return Number;
 	}
 	static double ReadDblNumber(string message="")
 	{
-		string text;
+		/*string text;
 		char c;
 		cout << message;
 		short commaCounter = 0;
@@ -77,29 +84,37 @@ public :
 					return stod(text);
 
 			}
+			cout << message;*/
+		double Number;
+		while (!(cin >> Number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize> ::max(), '\n'));
 			cout << message;
 		}
+		return Number;
+		
 	}
 	static bool IsValidDate(clsDate date)
 	{
 		return clsDate::IsValidDate(date);
 	}
-	static int ReadIntNumberBetween(int upperBound, int lowerBound)
+	static int ReadIntNumberBetween(int From, int To)
 	{
 		int number = ReadIntNumber();
-		while (!IsNumberBetween(number, upperBound, lowerBound))
+		while (!IsNumberBetween(number, From, To))
 		{
-			cout << "The number isn't between " << lowerBound << " and " << upperBound << " plese enter another number : ";
+			cout << "The number isn't between " << From << " and " << To << " plese enter another number : ";
 			number = ReadIntNumber();
 		}
 		return number;
 	}
-	static double ReadDblNumberBetween(double upperBound, double lowerBound)
+	static double ReadDblNumberBetween(double From, double To)
 	{
 		double number = ReadDblNumber();
-		while (!IsNumberBetween(number, upperBound, lowerBound))
+		while (!IsNumberBetween(number, From, To))
 		{
-			cout << "The number isn't between " << lowerBound << " and " << upperBound << " plese enter another number : ";
+			cout << "The number isn't between " << From << " and " << To << " plese enter another number : ";
 			number = ReadDblNumber();
 		}
 		return number;
