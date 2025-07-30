@@ -23,6 +23,17 @@ public :
 		}
 		return date.DateIsLessThanDate2(To) && date.isDate1AfterDate2(From) ? true : false;
 	}
+	static string ReadString(string message = "")
+	{
+		string text;
+		while (!(cin >> text))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize> ::max(), '\n');
+			cout << message;
+		}
+		return text;
+	}
 	static int ReadIntNumber(string message="")
 	{	// this is the first soluation to the problem:
 		/*string text;
@@ -51,7 +62,7 @@ public :
 		while(!(cin>>Number))
 		{
 			cin.clear();
-			cin.ignore(numeric_limits<streamsize> ::max(),'\n'));
+			cin.ignore(numeric_limits<streamsize> ::max(),'\n');
 			cout << message;
 		}
 		return Number;
@@ -89,7 +100,7 @@ public :
 		while (!(cin >> Number))
 		{
 			cin.clear();
-			cin.ignore(numeric_limits<streamsize> ::max(), '\n'));
+			cin.ignore(numeric_limits<streamsize> ::max(), '\n');
 			cout << message;
 		}
 		return Number;
