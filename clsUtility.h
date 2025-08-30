@@ -2,6 +2,9 @@
 #include<iostream>
 #include "clsDate.h"
 #include "clsString.h"
+#include <iomanip>
+#include <sstream>
+#include <ctime>
 using namespace std;
 class clsUtility
 {
@@ -351,6 +354,20 @@ public:
         cout << message;
         char c;
         cin >> c;
+    }
+
+    static string CurrentTime()
+    {
+        time_t now = time(0);
+        tm ltm;
+        localtime_s(&ltm, &now);
+
+        ostringstream oss;
+        oss << setfill('0') << setw(2) << ltm.tm_hour << ":"
+            << setfill('0') << setw(2) << ltm.tm_min << ":"
+            << setfill('0') << setw(2) << ltm.tm_sec;
+
+        return oss.str();
     }
 };
 
