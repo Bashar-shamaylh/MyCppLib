@@ -264,6 +264,18 @@ public:
             return number * -1;
         return number;
     }
+    static void PrintSpaces(short NumberOfSpaces)
+    {
+        for (short i = 0; i < NumberOfSpaces; i++)
+            cout << " ";
+    }
+    static void PrintTaps(short NumberOfTaps)
+    {
+        for (short i = 0; i < NumberOfTaps; i++)
+        {
+            cout << "\t";
+        }
+    }
     static string NumberToText(int Number)
     {
 
@@ -328,6 +340,17 @@ public:
         }
 
 
+    }
+    static void SetScreen()
+    {
+        
+        system("cls");
+    }
+    static void ReadInput(string message="")
+    {
+        cout << message;
+        char c;
+        cin >> c;
     }
 };
 

@@ -578,6 +578,15 @@ public:
 		}
 		return VacationStartDate;
 	}
+	static void Print(clsDate date)
+	{
+		cout << date.day << "/" << date.month << "/" << date.year << endl;
+	}
+	static clsDate GetCurrentDate()
+	{
+		clsDate date;
+		return date;
+	}
 
 };
 
