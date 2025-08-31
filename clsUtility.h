@@ -78,7 +78,7 @@ public:
         char c = 'c';
         for (int i = 0; i < EncryptedText.length(); i++)
         {
-            EncryptedText[i] = char((int)EncryptedText[i] + key);
+            EncryptedText[i] = char((int)EncryptedText[i] - key);
         }
 
 
